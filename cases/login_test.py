@@ -1,8 +1,6 @@
 import unittest
 from api.login_api import login
-
-#定义一个全局变量，用于存储sessionId
-sessionId = ""
+import setting
 
 class TestLogin(unittest.TestCase):
     def setUp(self) -> None:
@@ -21,9 +19,8 @@ class TestLogin(unittest.TestCase):
         self.assertEqual(1, actual_result.get('code'))
         self.assertEqual('操作成功', actual_result.get('msg'))
         #提取字段里的sessionId值，放入全局变量中供其他方法调用
-        global sessionId
-        sessionId = actual_result.get('data').get('sessionId')
-        print(sessionId)
+        setting.sessionId = actual_result.get('data').get('sessionId')
+        print(setting.sessionId)
 
     # case2: 输入错误的用户名或密码，登录失败
     def test_login_failed(self):

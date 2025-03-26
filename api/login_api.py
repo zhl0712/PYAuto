@@ -21,5 +21,6 @@ def login(username,password):
     }
     print(payload)
     response = requests.request("POST", test_url+'/login', headers=headers, data=payload)
+
     print(response.json())
     return response.json()
