@@ -2,8 +2,8 @@ import json
 
 import requests
 
-#测试环境地址
-test_url = "http://172.17.25.223/manas_api/portal"
+from setting import test_url
+
 
 def login(username,password):
     payload = json.dumps({
